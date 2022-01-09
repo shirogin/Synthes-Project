@@ -2,6 +2,7 @@
 #include<glad/glad.h>
 #include"VBO.h"
 
+
 class VAO
 {
 public:
@@ -10,8 +11,8 @@ public:
 	// Constructor that generates a VAO ID
 	VAO();
 
-	// Links a VBO to the VAO using a certain layout
-	void LinkVBO(VBO& VBO, GLuint layout);
+	// Links a VBO Attribute such as a position or color to the VAO
+	void LinkAttrib(VBO& VBO, GLuint layout, GLuint numComponents, GLenum type, GLsizeiptr stride, void* offset);
 	// Binds the VAO
 	void Bind();
 	// Unbinds the VAO
@@ -19,4 +20,3 @@ public:
 	// Deletes the VAO
 	void Delete();
 };
-

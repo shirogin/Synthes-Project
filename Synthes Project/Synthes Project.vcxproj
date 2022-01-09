@@ -72,22 +72,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include;$(SolutionDir)Dependencies\GLM\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -96,6 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -111,6 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,6 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +144,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,23 +155,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="EBO.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="ShaderClass.cpp" />
     <ClCompile Include="stb.cpp" />
     <ClCompile Include="Synthes Project.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VAO.cpp" />
     <ClCompile Include="VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag" />
     <None Include="default.vert" />
+    <None Include="light.frag" />
+    <None Include="light.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="EBO.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="ShaderClass.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="VAO.h" />
     <ClInclude Include="VBO.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\abdou.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
