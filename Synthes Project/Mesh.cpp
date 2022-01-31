@@ -25,6 +25,7 @@ Mesh::Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::v
 
 void Mesh::Draw(Shader& shader, Camera& camera)
 {
+	
 	// Bind shader to be able to access uniforms
 	shader.Activate();
 	VAO.Bind();

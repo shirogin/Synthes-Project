@@ -3,7 +3,12 @@
 #include<stb_image.h>
 
 #include"shaderClass.h"
+#include<filesystem>
+namespace fs = std::filesystem;
 
+
+const std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
+const std::string texPath = "/Synthes Project/Resources/";
 class Texture
 {
 public:
