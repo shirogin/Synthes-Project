@@ -116,6 +116,14 @@ void GameManager::Input() {
 	{
 		(*models)[currentMoving]->Translate(glm::vec3(0.0f, 0.0f, speed));
 	}
+	if (glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS)
+	{
+		(*models)[currentMoving]->Translate(glm::vec3(0.0f, speed, 0.0f ));
+	}
+	if (glfwGetKey(window, GLFW_KEY_RIGHT_CONTROL) == GLFW_PRESS)
+	{
+		(*models)[currentMoving]->Translate(glm::vec3(0.0f, -speed, 0.0f));
+	}
 	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
 	{
 		if (switchable) {
