@@ -49,7 +49,7 @@ void Mesh::Draw(Shader& shader, Camera& camera)
 		textures[i].texUnit(shader, (type + num).c_str(), i);
 		textures[i].Bind();
 	}
-	// Take care of the camera Matrix
+	
 	glUniform3f(glGetUniformLocation(shader.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
 	camera.Matrix(shader, "camMatrix");
 

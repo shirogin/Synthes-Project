@@ -44,3 +44,9 @@ void Model::SetMesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indice
 {
 	mesh = new Mesh(vertices, indices, textures);
 }
+
+void Model::SetTexture(const char* imageDiffuse, const char* imageSpecular)
+{
+	mesh->textures[0] = Texture(imageDiffuse, "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE);
+	mesh->textures[1] = Texture(imageSpecular, "specular", 1, GL_RED, GL_UNSIGNED_BYTE);
+}

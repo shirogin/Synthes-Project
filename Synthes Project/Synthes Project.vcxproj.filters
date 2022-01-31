@@ -117,5 +117,11 @@
     <Image Include="Resources\abdou.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="Resources\diffuse.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resources\specular.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

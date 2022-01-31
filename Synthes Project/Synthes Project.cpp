@@ -1,79 +1,14 @@
 // Synthes Project.cpp : This file contains the 'main' function. Program execution begins and ends there.
+#include"Cube.h"
+#include"LightCube.h"
 #include<filesystem>
 namespace fs = std::filesystem;
 //------------------------------
-
-#include"Mesh.h"
-#include"Cube.h"
-#include"LightCube.h"
-
 
 
 const unsigned int width = 800;
 const unsigned int height = 600;
 
-
-
-// Vertices coordinates
-Vertex vertices[] =
-{ //               COORDINATES           /            COLORS          /           TexCoord         /       NORMALS         //
-	// ToP
-	Vertex{glm::vec3(-1.0f, 1.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3(-1.0f, 1.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
-	Vertex{glm::vec3(1.0f, 1.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
-	Vertex{glm::vec3(1.0f, 1.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 0.0f)},
-	//Bottom
-	Vertex{glm::vec3(-1.0f, -1.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
-	Vertex{glm::vec3(1.0f, -1.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
-	Vertex{glm::vec3(1.0f, -1.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 0.0f)},
-};
-
-// Indices for vertices order
-GLuint indices[] =
-{
-	0, 1, 2,
-	0, 2, 3,
-	0, 4, 7,
-	0, 7, 3,
-	3, 7, 6,
-	3, 6, 2,
-	2, 6, 5,
-	2, 5, 1,
-	1, 5, 4,
-	1, 4, 0,
-	4, 5, 6,
-	4, 6, 7
-
-};
-
-Vertex lightVertices[] =
-{ //     COORDINATES     //
-	Vertex{glm::vec3(-0.1f, 0.0f,  0.1f)},
-	Vertex{glm::vec3(-0.1f, 0.0f, -0.1f)},
-	Vertex{glm::vec3(0.1f, 0.0f, -0.1f)},
-	Vertex{glm::vec3(0.1f, 0.0f,  0.1f)},
-	Vertex{glm::vec3(-0.1f,  0.2f,  0.1f)},
-	Vertex{glm::vec3(-0.1f,  0.2f, -0.1f)},
-	Vertex{glm::vec3(0.1f,  0.2f, -0.1f)},
-	Vertex{glm::vec3(0.1f,  0.2f,  0.1f)}
-};
-
-GLuint lightIndices[] =
-{
-	0, 1, 2,
-	0, 2, 3,
-	0, 4, 7,
-	0, 7, 3,
-	3, 7, 6,
-	3, 6, 2,
-	2, 6, 5,
-	2, 5, 1,
-	1, 5, 4,
-	1, 4, 0,
-	4, 5, 6,
-	4, 6, 7
-};
 
 
 int main()
@@ -106,66 +41,15 @@ int main()
 	// Specify the viewport of OpenGL in the Window
 	glViewport(0, 0, width, height);
 
+	Cube cube(new Shader("default.vert", "default.frag")),
+		cube2(new Shader("default.vert", "default.frag"), glm::vec3(1.5f, 0.0f, 0.0f));
+	LightCube lc(new Shader("light.vert", "light.frag"), glm::vec3(0.0f, 5.0f, -5.0f));
 
-	// Texture data
-	Texture textures[]
-	{
-		Texture( "abdou.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
-		Texture( "abdou.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
-	};
-
-
-
-	// Generates Shader object using shaders default.vert and default.frag
-	Shader shaderProgram("default.vert", "default.frag");
-	// Store mesh data in vectors for the mesh
-	std::vector <Vertex> verts(vertices, vertices + sizeof(vertices) / sizeof(Vertex));
-	std::vector <GLuint> ind(indices, indices + sizeof(indices) / sizeof(GLuint));
-	std::vector <Texture> tex(textures, textures + sizeof(textures) / sizeof(Texture));
-	// Create cube mesh
-	Mesh floor1(verts, ind, tex);
+	cube2.SetTexture("abdou.png", "abdou.png");
 	
-	Cube c(new Shader("default.vert", "default.frag"));
-	LightCube lc(new Shader("light.vert", "light.frag"), glm::vec3(0.5f, 0.5f, 0.5f));
-
-	// Shader for light cube
-	Shader lightShader("light.vert", "light.frag");
-	// Store mesh data in vectors for the mesh
-	std::vector <Vertex> lightVerts(lightVertices, lightVertices + sizeof(lightVertices) / sizeof(Vertex));
-	std::vector <GLuint> lightInd(lightIndices, lightIndices + sizeof(lightIndices) / sizeof(GLuint));
-	// Crate light mesh
-	Mesh light(lightVerts, lightInd, tex);
-
-	
-
-
-
-	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-	glm::vec3 lightPos = glm::vec3(-0.5f, 5.0f, -0.5f);
-	glm::mat4 lightModel = glm::mat4(1.0f);
-	lightModel = glm::translate(lightModel, lightPos);
-	std::cout << glm::to_string(lightModel) << std::endl;
-	glm::vec3 objectPos = glm::vec3(2.0f, 0.0f, 0.0f);
-	glm::mat4 objectModel = glm::mat4(1.0f);
-	objectModel = glm::translate(objectModel, objectPos);
-	
-
-
-	lightShader.Activate();
-	glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
-	glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-
 	lc.Activate();
-	c.Activate(&lc);
-
-	shaderProgram.Activate();
-	glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
-	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
-
-	
-
-
+	cube.Activate(&lc);
+	cube2.Activate(&lc);
 
 
 	// Enables the Depth Buffer
@@ -189,11 +73,10 @@ int main()
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
 
 
-		// Draws different meshes
-		floor1.Draw(shaderProgram, camera);
-		light.Draw(lightShader, camera);
+		// Draws different Model
 		lc.Draw(camera);
-		c.Draw(camera);
+		cube.Draw(camera);
+		cube2.Draw(camera);
 
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
@@ -203,10 +86,9 @@ int main()
 
 
 
-	// Delete all the objects we've created
-	shaderProgram.Delete();
-	lightShader.Delete();
-	c.Delete();
+	// Delete all the objects we've created	
+	cube.Delete();
+	cube2.Delete();
 	lc.Delete();
 	// Delete window before ending the program
 	glfwDestroyWindow(window);

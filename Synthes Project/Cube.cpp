@@ -49,8 +49,8 @@ void Cube::InitMesh() {
 	// Texture data
 	const Texture CubeTextures[]
 	{
-		Texture("abdou.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
-		Texture("abdou.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
+		Texture("diffuse.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
+		Texture("specular.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
 	};
 	std::vector <Vertex> verts(CubeVertices, CubeVertices + sizeof(CubeVertices) / sizeof(Vertex));
 	std::vector <GLuint> ind(CubeIndices, CubeIndices + sizeof(CubeIndices) / sizeof(GLuint));
