@@ -1,4 +1,5 @@
 // Synthes Project.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
 #include"GameManager.h"
 
 int main()
@@ -19,6 +20,11 @@ int main()
 	gameManager.Activate();
 
 
+	// activite shaders for each objects
+	light->Activate();
+	cube1->Activate(light);
+	
+
 
 
 	// Main while loop
@@ -30,8 +36,8 @@ int main()
 
 
 	// Delete all the objects we've created
+
 	gameManager.Delete();
-	
-	
-	return 0;
+  
+  return 0;
 }

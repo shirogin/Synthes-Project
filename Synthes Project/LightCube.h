@@ -2,6 +2,7 @@
 #include"Model.h"
 
 class LightCube : public Model
+
 {
 public:
 	LightCube(Shader* sh);

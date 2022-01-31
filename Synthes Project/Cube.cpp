@@ -1,5 +1,4 @@
 #include "Cube.h"
-
 const Vertex CubeVertices[]
 { //               COORDINATES           /            NORMALS          /           COLORS         /        TexCoord        //
 	// ToP
@@ -46,9 +45,11 @@ Cube::Cube(Shader* sh, glm::vec3 position, glm::vec4 color)
 void Cube::InitMesh() {
 	
 
+
 	// Texture data
 	const Texture CubeTextures[]
 	{
+
 		Texture("diffuse.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
 		Texture("specular.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
 	};
@@ -63,5 +64,6 @@ void Cube::Activate(Model* light)
 	shader->Activate();
 	Model::Activate(light->Color);
 	glUniform3f(glGetUniformLocation(shader->ID, "lightPos"), light->Position.x, light->Position.y, light->Position.z);
+
 };
 

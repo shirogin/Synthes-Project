@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 #include<glm/glm.hpp>
@@ -11,6 +11,7 @@
 
 class Object
 {
+
 public:
 	glm::vec3 Position;
 	glm::mat4 model = glm::mat4(1.0f);

@@ -1,11 +1,9 @@
 #pragma once
 #include<glad/glad.h>
 #include<stb_image.h>
-
 #include"shaderClass.h"
 #include<filesystem>
 namespace fs = std::filesystem;
-
 
 const std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
 const std::string texPath = "/Synthes Project/Resources/";
@@ -19,7 +17,7 @@ public:
 	Texture(const char* image, const char* texType, GLuint slot, GLenum format, GLenum pixelType);
 
 	// Assigns a texture unit to a texture
-	void texUnit(Shader& shader, const char* uniform, GLuint unit);
+	void texUnit(Shader* shader, const char* uniform, GLuint unit);
 	// Binds a texture
 	void Bind();
 	// Unbinds a texture

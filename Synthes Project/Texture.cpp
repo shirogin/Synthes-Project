@@ -1,5 +1,6 @@
 #include"Texture.h"
 
+
 Texture::Texture(const char* image, const char* texType, GLuint slot, GLenum format, GLenum pixelType)
 {
 	// Assigns the type of the texture ot the texture object
@@ -19,17 +20,14 @@ Texture::Texture(const char* image, const char* texType, GLuint slot, GLenum for
 	unit = slot;
 	glBindTexture(GL_TEXTURE_2D, ID);
 
-	// Configures the type of algorithm that is used to make the image smaller or bigger
+	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-	// Configures the way the texture repeats (if it does at all)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	// Extra lines in case you choose to use GL_CLAMP_TO_BORDER
-	// float flatColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
-	// glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, flatColor);
+	
 
 	// Assigns the image to the OpenGL Texture object
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, widthImg, heightImg, 0, format, pixelType, bytes);
@@ -43,12 +41,12 @@ Texture::Texture(const char* image, const char* texType, GLuint slot, GLenum for
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Texture::texUnit(Shader& shader, const char* uniform, GLuint unit)
+void Texture::texUnit(Shader* shader, const char* uniform, GLuint unit)
 {
 	// Gets the location of the uniform
-	GLuint texUni = glGetUniformLocation(shader.ID, uniform);
+	GLuint texUni = glGetUniformLocation(shader->ID, uniform);
 	// Shader needs to be activated before changing the value of a uniform
-	shader.Activate();
+	shader->Activate();
 	// Sets the value of the uniform
 	glUniform1i(texUni, unit);
 }

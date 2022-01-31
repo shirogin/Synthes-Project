@@ -163,6 +163,7 @@
     <ClCompile Include="LightCube.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
+
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ShaderClass.cpp" />
     <ClCompile Include="stb.cpp" />

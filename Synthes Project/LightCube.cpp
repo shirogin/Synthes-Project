@@ -1,5 +1,6 @@
 #include "LightCube.h"
 
+
 Vertex LightCubeVertices[] =
 { //     COORDINATES     //
 	Vertex{glm::vec3(-0.1f, 0.0f,  0.1f)},
@@ -42,11 +43,14 @@ LightCube::LightCube(Shader* sh, glm::vec3 position, glm::vec4 color)
 }
 void LightCube::Activate()
 {
+
 	Model::Activate(Color);
+
 }
 
 
 void LightCube::InitMesh() {
+
 	
 	// Texture data
 	Texture LightCubeTextures[]
