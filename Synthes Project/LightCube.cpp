@@ -33,6 +33,7 @@ LightCube::LightCube(Shader* sh)
 };
 LightCube::LightCube(Shader* sh, glm::vec3 position)
 	: Model(sh, position) {
+	
 	InitMesh();
 };
 LightCube::LightCube(Shader* sh, glm::vec3 position, glm::vec4 color)
