@@ -17,17 +17,14 @@ const GLuint CubeIndices[]
 	4, 5, 6,
 	4, 6, 7
 };
-Cube::Cube(Shader* sh)
-	: Model(sh) {
+Cube::Cube() : Model() {
 	InitMesh();
 }
 
-Cube::Cube(Shader* sh, glm::vec3 position)
-	: Model(sh, position) {
+Cube::Cube( glm::vec3 position) : Model( position) {
 	InitMesh();
 };
-Cube::Cube(Shader* sh, glm::vec3 position, glm::vec4 color)
-	: Model(sh, position, color) {
+Cube::Cube( glm::vec3 position, glm::vec4 color) : Model( position, color) {
 	InitMesh();
 };
 

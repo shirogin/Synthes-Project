@@ -60,3 +60,9 @@ void Shader::Delete()
 {
 	glDeleteProgram(ID);
 }
+
+Shader* Shader::DefaultShader() {
+	if (ds == NULL) ds = new Shader("default.vert", "default.frag");
+	return ds;
+}
+Shader* Shader::ds = NULL;

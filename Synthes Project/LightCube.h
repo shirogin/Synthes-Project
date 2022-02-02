@@ -4,10 +4,12 @@
 class LightCube : public Model
 {
 public:
-	LightCube(Shader* sh);
-	LightCube(Shader* sh, glm::vec3 position);
-	LightCube(Shader* sh, glm::vec3 position, glm::vec4 color);
+	static Shader* defaultLightShader;
+	LightCube();
+	LightCube( glm::vec3 position);
+	LightCube( glm::vec3 position, glm::vec4 color);
 	void Activate();
 	void InitMesh();
+	static Shader* DefaultShader();
 };
 

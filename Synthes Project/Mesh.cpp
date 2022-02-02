@@ -23,7 +23,7 @@ Mesh::Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::v
 }
 
 
-void Mesh::Draw(Shader& shader, Camera& camera)
+void Mesh::Draw(Shader& shader, Camera& camera, glm::mat4 model )
 {
 	
 	// Bind shader to be able to access uniforms
@@ -51,6 +51,7 @@ void Mesh::Draw(Shader& shader, Camera& camera)
 	}
 	
 	glUniform3f(glGetUniformLocation(shader.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
 	camera.Matrix(shader, "camMatrix");
 
 	// Draw the actual mesh
