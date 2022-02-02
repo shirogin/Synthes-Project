@@ -19,6 +19,7 @@ GameManager::GameManager(Camera *camera)
 		glfwTerminate();
 		exit(-1);
 	}
+
 	mainCamera = camera;
 
 	// Introduce the window into the current context
@@ -87,7 +88,6 @@ void GameManager::Delete()
 	for (Cube* m : *models) {
 		m->Delete();
 	}
-
 }
 
 void GameManager::Terminate()

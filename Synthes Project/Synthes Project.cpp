@@ -39,7 +39,7 @@ void CreateTree(GameManager *gameManager, glm::vec3 p0) {
 
 int main()
 {
-	
+
 	GameManager gameManager( new Camera(GameManager::width, GameManager::height, glm::vec3(0.0f, 3.0f, 4.0f)) );
 
 	gameManager.SetLight(new LightCube(new Shader("light.vert", "light.frag"), glm::vec3(0.0f, 5.0f, -5.0f)));
@@ -65,6 +65,12 @@ int main()
 	// Main while loop
 	while (!glfwWindowShouldClose(gameManager.window))
 	{	
+		/// <summary>
+		/// Use WASD to move around the world
+		/// Use Up, Down, Left, Right to move a selected object
+		/// Use R to select other objects to interact with
+		/// </summary>
+		/// <returns></returns>
 		gameManager.Update();
 	}
 
@@ -72,6 +78,8 @@ int main()
 
 	// Delete all the objects we've created
 	gameManager.Delete();
+
+	gameManager.Terminate();
 	
 	
 	return 0;
