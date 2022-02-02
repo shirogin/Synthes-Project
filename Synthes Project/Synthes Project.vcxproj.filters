@@ -129,5 +129,8 @@
     <Image Include="Resources\specular.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="Resources\Grass.jpg">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -17,7 +17,6 @@ void Model::Draw(Camera& camera) {
 }
 void Model::Activate(glm::vec4 lightColor) {
 	shader->Activate();
-	
 	glUniformMatrix4fv(glGetUniformLocation(shader->ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
 	glUniform4f(glGetUniformLocation(shader->ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 };
@@ -30,6 +29,7 @@ void Model::Delete()
 void Model::Translate(glm::vec3 vec)
 {
 	Object::Translate(vec);
+	shader->Activate();
 	glUniformMatrix4fv(glGetUniformLocation(shader->ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
 }
 

@@ -194,6 +194,7 @@
   <ItemGroup>
     <Image Include="Resources\abdou.png" />
     <Image Include="Resources\diffuse.png" />
+    <Image Include="Resources\Grass.jpg" />
     <Image Include="Resources\specular.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

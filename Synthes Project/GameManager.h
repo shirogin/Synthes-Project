@@ -12,6 +12,7 @@ public:
 	GLFWwindow* window;
 	Camera *mainCamera;
 	bool switchable=true;
+
 	std::vector <Cube*>* models = new std::vector <Cube*>();
 		LightCube *light;
 

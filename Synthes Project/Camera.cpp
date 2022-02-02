@@ -2,19 +2,16 @@
 
 Camera::Camera(int width, int height, glm::vec3 position):Object(position)
 {
-	
 	Camera::width = width;
 	Camera::height = height;
 }
 
 void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
 {
-	// Initializes matrices since otherwise they will be the null matrix
-	glm::mat4 view = glm::mat4(1.0f);
+	// Makes camera look in the right direction from the right position
+	glm::mat4 view = glm::lookAt(Position, Position + Orientation, Up);
 	glm::mat4 projection = glm::mat4(1.0f);
 
-	// Makes camera look in the right direction from the right position
-	view = glm::lookAt(Position, Position + Orientation, Up);
 	// Adds perspective to the scene
 	projection = glm::perspective(glm::radians(FOVdeg), (float)width / height, nearPlane, farPlane);
 
@@ -102,6 +99,6 @@ void Camera::Inputs(GLFWwindow* window)
 		else {
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 			glfwSetCursorPos(window, (width / 2), (height / 2));
-		}
+		}	
 	}
 }

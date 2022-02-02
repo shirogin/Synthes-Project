@@ -1,17 +1,4 @@
 #include "LightCube.h"
-
-Vertex LightCubeVertices[] =
-{ //     COORDINATES     //
-	Vertex{glm::vec3(-0.1f, 0.0f,  0.1f)},
-	Vertex{glm::vec3(-0.1f, 0.0f, -0.1f)},
-	Vertex{glm::vec3(0.1f, 0.0f, -0.1f)},
-	Vertex{glm::vec3(0.1f, 0.0f,  0.1f)},
-	Vertex{glm::vec3(-0.1f,  0.2f,  0.1f)},
-	Vertex{glm::vec3(-0.1f,  0.2f, -0.1f)},
-	Vertex{glm::vec3(0.1f,  0.2f, -0.1f)},
-	Vertex{glm::vec3(0.1f,  0.2f,  0.1f)}
-};
-
 GLuint LightCubeIndices[] =
 {
 	0, 1, 2,
@@ -27,6 +14,7 @@ GLuint LightCubeIndices[] =
 	4, 5, 6,
 	4, 6, 7
 };
+
 LightCube::LightCube(Shader* sh)
 	: Model(sh) {
 	InitMesh();
@@ -47,6 +35,19 @@ void LightCube::Activate()
 
 
 void LightCube::InitMesh() {
+	
+	Vertex LightCubeVertices[] =
+	{ //     COORDINATES     //
+		Vertex(glm::vec3(-0.1f, 0.0f,  0.1f)),
+		Vertex(glm::vec3(-0.1f, 0.0f, -0.1f)),
+		Vertex(glm::vec3(0.1f, 0.0f, -0.1f)),
+		Vertex(glm::vec3(0.1f, 0.0f,  0.1f)),
+		Vertex(glm::vec3(-0.1f,  0.2f,  0.1f)),
+		Vertex(glm::vec3(-0.1f,  0.2f, -0.1f)),
+		Vertex(glm::vec3(0.1f,  0.2f, -0.1f)),
+		Vertex(glm::vec3(0.1f,  0.2f,  0.1f))
+	};
+
 	
 	// Texture data
 	Texture LightCubeTextures[]

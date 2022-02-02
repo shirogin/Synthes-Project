@@ -1,5 +1,24 @@
 #include "VBO.h"
 
+#include <iostream>
+
+Vertex::Vertex(glm::vec3 p)
+{
+	position = p;
+}
+
+Vertex::Vertex(glm::vec3 p, glm::vec3 n, glm::vec3 c, glm::vec2 t)
+{
+	position=p;
+	normal=n;
+	color=c;
+	texUV=t;
+}
+
+// Copy the Vertex
+Vertex* Vertex::VertexCopy() {
+	return  new Vertex(position, normal, color, texUV);
+}
 // Constructor that generates a Vertex Buffer Object and links it to vertices
 VBO::VBO(std::vector<Vertex>& vertices)
 {

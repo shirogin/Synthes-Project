@@ -11,8 +11,13 @@ struct Vertex
 	glm::vec3 normal;
 	glm::vec3 color;
 	glm::vec2 texUV;
-};
 
+	Vertex(glm::vec3 p);
+	Vertex(glm::vec3 p,glm::vec3 n,glm::vec3 c,glm::vec2 t);
+	Vertex* VertexCopy();
+};
+// Copy the VBO
+void Copy();
 
 
 class VBO

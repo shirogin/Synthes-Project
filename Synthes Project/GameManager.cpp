@@ -20,7 +20,7 @@ GameManager::GameManager(Camera *camera)
 		exit(-1);
 	}
 	mainCamera = camera;
-	GameManager::light = light;
+
 	// Introduce the window into the current context
 	glfwMakeContextCurrent(window);
 
@@ -127,6 +127,7 @@ void GameManager::Input() {
 	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
 	{
 		if (switchable) {
+			std::cout << currentMoving << " ID :  "<< (*models)[currentMoving]->shader->ID << std::endl;
 			currentMoving = (currentMoving + 1) % models->size(); 
 			switchable = false;
 		}
