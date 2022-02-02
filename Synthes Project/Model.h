@@ -4,6 +4,8 @@
 class Model : public Object
 {
 public:
+	static std::vector <Texture> *textures;
+	static void LoadTextures();
 	Mesh* mesh = NULL;
 	Shader* shader;
 	glm::vec4 Color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
@@ -15,7 +17,7 @@ public:
 	void Delete();
 	void Translate(glm::vec3 vec);
 	virtual void InitMesh(); // abstract
-	void SetMesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::vector <Texture>& textures);
-	void SetTexture(const char* imageDiffuse, const char* imageSpecular);
+	void SetMesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices);
+	void SetTexture(std::vector <Texture> *Textures);
 };
 

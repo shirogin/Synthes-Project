@@ -9,7 +9,6 @@ GameManager::GameManager(Camera *camera)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	// Tell GLFW we are using the CORE profile
-	// So that means we only have the modern functions
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	GameManager::window = glfwCreateWindow(width, height, "Synthes Project", NULL, NULL) ;

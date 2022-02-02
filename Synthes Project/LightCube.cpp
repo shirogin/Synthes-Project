@@ -49,14 +49,8 @@ void LightCube::InitMesh() {
 	};
 
 	
-	// Texture data
-	Texture LightCubeTextures[]
-	{
-		Texture("abdou.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
-		Texture("abdou.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
-	};
+
 	std::vector <Vertex> verts(LightCubeVertices, LightCubeVertices + sizeof(LightCubeVertices) / sizeof(Vertex));
 	std::vector <GLuint> ind(LightCubeIndices, LightCubeIndices + sizeof(LightCubeIndices) / sizeof(GLuint));
-	std::vector <Texture> tex(LightCubeTextures, LightCubeTextures + sizeof(LightCubeTextures) / sizeof(Texture));
-	SetMesh(verts, ind, tex);
+	SetMesh(verts, ind);
 };

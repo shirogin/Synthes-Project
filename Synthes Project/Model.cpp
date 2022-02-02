@@ -2,6 +2,7 @@
 #include "Model.h"
 Model::Model(Shader* shaderIn) : Object() {
 	shader = shaderIn;
+	Model::LoadTextures();
 };
 Model::Model(Shader* shaderIn, glm::vec3 position)
 	: Model(shaderIn) {
@@ -40,13 +41,24 @@ void Model::InitMesh()
 
 
 
-void Model::SetMesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::vector <Texture>& textures)
+void Model::SetMesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices)
 {
 	mesh = new Mesh(vertices, indices, textures);
 }
 
-void Model::SetTexture(const char* imageDiffuse, const char* imageSpecular)
+void Model::SetTexture(std::vector <Texture> *Textures)
 {
-	mesh->textures[0] = Texture(imageDiffuse, "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE);
-	mesh->textures[1] = Texture(imageSpecular, "specular", 1, GL_RED, GL_UNSIGNED_BYTE);
+	mesh->textures = Textures;
 }
+void Model::LoadTextures()
+{
+	if (Model::textures!=NULL) return;
+	// Texture data
+	const Texture CubeTextures[]
+	{
+		Texture("diffuse.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
+		Texture("specular.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
+	};
+	Model::textures = new std::vector <Texture>(CubeTextures, CubeTextures + 2);
+};
+std::vector <Texture> *Model::textures = NULL;
