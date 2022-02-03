@@ -172,6 +172,7 @@
     <ClCompile Include="VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="default.frag" />
     <None Include="default.vert" />
     <None Include="light.frag" />

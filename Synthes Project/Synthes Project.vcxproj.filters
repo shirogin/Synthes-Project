@@ -80,6 +80,7 @@
     <None Include="light.frag">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderClass.h">
